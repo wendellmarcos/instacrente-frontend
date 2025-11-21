@@ -1,28 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ========================================
+   CSS VARIABLES - CRIMSON GLASS (iPhone 17 Style)
+   Inspirada no sangue de Cristo - Carmesim translúcido
+   ======================================== */
+:root {
+  /* Neutral Colors - Cristalino */
+  --color-white: #ffffff;
+  --color-gray-50: #fefefe;
+  --color-gray-100: #f9fafb;
+  --color-gray-200: #f3f4f6;
+  --color-gray-300: #e5e7eb;
+  --color-gray-400: #d1d5db;
+  --color-gray-500: #9ca3af;
+  --color-gray-600: #6b7280;
+  --color-gray-700: #4b5563;
+  --color-gray-800: #374151;
+  --color-gray-900: #1f2937;
+
+  /* Primary - Carmesim/Sangue */
+  --color-primary: #e61e42;
+  --color-primary-light: #ff6b7f;
+  --color-primary-dark: #c2122f;
+  --color-primary-pale: #fff1f2;
+
+  /* Blood Red - Profundo */
+  --color-blood: #dc2626;
+  --color-blood-light: #ef4444;
+  --color-blood-dark: #991b1b;
+
+  /* Accent - Carmesim vibrante */
+  --color-accent: #e61e42;
+  --color-accent-dark: #c2122f;
+  --color-accent-light: #ff6b7f;
+  --color-accent-glow: #ff9eab;
+
+  /* Secondary - Dourado (Luz divina) */
+  --color-gold: #fbbf24;
+  --color-gold-light: #fde68a;
+  --color-gold-dark: #f59e0b;
+
+  /* Tertiary - Lavanda (Espiritual) */
+  --color-lavender: #c084fc;
+  --color-lavender-light: #e9d5ff;
+  --color-lavender-dark: #a855f7;
+
+  /* Shadows - Efeito Glass Morphism */
+  --shadow-xs: 0 1px 2px 0 rgba(230, 30, 66, 0.08);
+  --shadow-sm: 0 2px 8px 0 rgba(230, 30, 66, 0.12);
+  --shadow-md: 0 4px 16px -2px rgba(230, 30, 66, 0.15);
+  --shadow-lg: 0 10px 24px -4px rgba(230, 30, 66, 0.2);
+  --shadow-xl: 0 20px 40px -8px rgba(230, 30, 66, 0.25);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+
+  /* Transitions - Suave como iOS */
+  --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   BASE STYLES - iPhone 17 Inspired
+   ======================================== */
 body {
-  background: linear-gradient(135deg, #f5e6e6 0%, #f0d0d0 100%);
-  min-height: 100vh;
-  color: #2d1a1a;
+  background: linear-gradient(135deg, #fefefe 0%, #fff1f2 50%, #ffe1e4 100%);
+  background-attachment: fixed;
+  color: var(--color-gray-900);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-gray-900);
 }
 
-.glass-card {
-  @apply glass rounded-xl p-6;
+.text-display {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-weight: 600;
 }
 
+/* ========================================
+   BUTTONS - Glass Morphism (iPhone 17 Style)
+   ======================================== */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-8 py-4 bg-gradient-to-br from-crimson-600 to-blood-600 text-white text-sm font-semibold rounded-2xl shadow-crimson backdrop-blur-xl transition-all duration-500 hover:shadow-blood hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-crimson-400;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-8 py-4 bg-white/70 backdrop-blur-xl text-crimson-600 text-sm font-semibold border-2 border-crimson-200/50 rounded-2xl shadow-glass transition-all duration-500 hover:bg-white/90 hover:border-crimson-400 hover:shadow-crimson active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-crimson-300;
+}
+
+.btn-accent {
+  @apply inline-flex items-center justify-center px-8 py-4 bg-gradient-to-br from-crimson-500 via-blood-500 to-crimson-600 text-white text-sm font-bold tracking-wide rounded-2xl shadow-glow-lg backdrop-blur-xl transition-all duration-500 hover:shadow-glow-xl hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-glow;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-accent:hover::before {
+  left: 100%;
+}
+
+/* ========================================
+   CARDS - Glass Morphism
+   ======================================== */
+.card {
+  @apply bg-white/60 backdrop-blur-2xl border border-crimson-100/30 rounded-3xl shadow-glass transition-all duration-500 hover:bg-white/80 hover:border-crimson-200/50 hover:shadow-crimson;
+  backdrop-filter: blur(20px);
+}
+
+.card-hover {
+  @apply bg-white/70 backdrop-blur-2xl border border-crimson-100/40 rounded-3xl shadow-glass transition-all duration-500 hover:shadow-blood hover:bg-white/90 hover:border-crimson-300/60 hover:-translate-y-2 hover:scale-[1.01];
+  backdrop-filter: blur(24px);
+}
+
+/* ========================================
+   FORM ELEMENTS - Glass Style
+   ======================================== */
+.input {
+  @apply w-full px-5 py-4 bg-white/60 backdrop-blur-2xl border-2 border-crimson-200/40 text-gray-900 text-sm rounded-2xl shadow-glass transition-all duration-500 placeholder-gray-400 focus:outline-none focus:border-crimson-500 focus:ring-4 focus:ring-crimson-200/30 focus:bg-white/80 focus:shadow-crimson;
+  backdrop-filter: blur(20px);
+}
+
+.input:hover {
+  border-color: var(--color-accent-light);
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 4px 16px rgba(230, 30, 66, 0.1);
+}
+
+.label {
+  @apply block text-sm font-bold text-gray-800 mb-3;
+}
+
+/* ========================================
+   NAVBAR - iPhone 17 Glass Bar
+   ======================================== */
+.navbar {
+  @apply bg-white/70 backdrop-blur-3xl border-b border-crimson-100/30 transition-all duration-500 shadow-glass;
+  backdrop-filter: blur(40px) saturate(180%);
+}
+
+.navbar-scrolled {
+  @apply shadow-crimson bg-white/85 border-crimson-200/40;
+}
+
+/* ========================================
+   LAYOUT UTILITIES
+   ======================================== */
+.container-narrow {
+  @apply max-w-4xl mx-auto px-6;
+}
+
+.container-wide {
+  @apply max-w-7xl mx-auto px-6;
+}
+
+.section-padding {
+  @apply py-24 md:py-32;
+}
+
+/* ========================================
+   ANIMATIONS - SUBTLE
+   ======================================== */
+.fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   ACCENT ELEMENTS
+   ======================================== */
+.accent-line {
+  @apply w-16 h-1.5 bg-gradient-to-r from-crimson-500 via-blood-500 to-crimson-600 rounded-full shadow-glow;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(230, 30, 66, 0.5);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 30px rgba(230, 30, 66, 0.7);
+  }
+}
+
+.accent-dot {
+  @apply w-2 h-2 bg-crimson-500 rounded-full shadow-glow-sm;
+}
+
+/* ========================================
+   LINKS
+   ======================================== */
+.link {
+  @apply text-crimson-600 font-semibold underline underline-offset-4 decoration-crimson-300/60 transition-all duration-300 hover:text-crimson-700 hover:decoration-crimson-500 hover:decoration-2;
+}
+
+.link-subtle {
+  @apply text-gray-700 font-medium transition-all duration-300 hover:text-crimson-600;
+}
+
+/* ========================================
+   DIVIDERS
+   ======================================== */
+.divider {
+  @apply border-t border-crimson-100/50;
+}
+
+.divider-thick {
+  @apply border-t-2 border-crimson-300/70;
+}
+
+/* ========================================
+   SPACING - GENEROUS
+   ======================================== */
+.space-y-lg>*+* {
+  margin-top: 3rem;
+}
+
+.space-y-xl>*+* {
+  margin-top: 4rem;
+}
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+@media (max-width: 768px) {
+  .section-padding {
+    @apply py-16;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ========================================
+   LEGACY SUPPORT (for existing classes)
+   ======================================== */
 .btn-blood {
-  @apply bg-blood-700 hover:bg-blood-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-red-900/50 border border-red-800;
+  @apply btn-primary;
 }
 
 .btn-glass {
-  @apply bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 backdrop-blur-sm border border-white/20;
+  @apply btn-secondary;
+}
+
+.glass-card {
+  @apply card-hover p-8;
+}
+
+.card-feature {
+  @apply card-hover p-8;
+}
+
+.input-premium {
+  @apply input;
+}
+
+.animate-on-scroll {
+  @apply reveal;
 }
