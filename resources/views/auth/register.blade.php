@@ -15,44 +15,74 @@
             </p>
         </div>
 
+        <!-- Success Message -->
+        @if(session('success'))
+            <div class="mb-6 p-4 bg-green-50 border-2 border-green-200 rounded-2xl backdrop-blur-xl">
+                <p class="text-green-700 text-sm font-semibold">{{ session('success') }}</p>
+            </div>
+        @endif
+
+        <!-- Error Summary -->
+        @if($errors->any())
+            <div class="mb-6 p-4 bg-crimson-50 border-2 border-crimson-200 rounded-2xl backdrop-blur-xl">
+                <p class="text-crimson-700 text-sm font-semibold mb-2">Por favor, corrija os seguintes erros:</p>
+                <ul class="list-disc list-inside text-crimson-600 text-sm space-y-1">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <!-- Form -->
         <form class="space-y-6" action="{{ route('register') }}" method="POST">
             @csrf
-            
+
             <!-- Name Field -->
             <div>
                 <label for="name" class="label">Nome Completo</label>
-                <input id="name" 
-                       name="name" 
-                       type="text" 
-                       autocomplete="name" 
-                       required 
-                       class="input"
+                <input id="name"
+                       name="name"
+                       type="text"
+                       autocomplete="name"
+                       required
+                       value="{{ old('name') }}"
+                       class="input @error('name') border-crimson-500 @enderror"
                        placeholder="Digite seu nome completo">
+                @error('name')
+                    <p class="mt-2 text-sm text-crimson-600">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Email Field -->
             <div>
                 <label for="email" class="label">Email</label>
-                <input id="email" 
-                       name="email" 
-                       type="email" 
-                       autocomplete="email" 
-                       required 
-                       class="input"
+                <input id="email"
+                       name="email"
+                       type="email"
+                       autocomplete="email"
+                       required
+                       value="{{ old('email') }}"
+                       class="input @error('email') border-crimson-500 @enderror"
                        placeholder="seu@email.com">
+                @error('email')
+                    <p class="mt-2 text-sm text-crimson-600">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Password Field -->
             <div>
                 <label for="password" class="label">Senha</label>
-                <input id="password" 
-                       name="password" 
-                       type="password" 
-                       autocomplete="new-password" 
-                       required 
-                       class="input"
+                <input id="password"
+                       name="password"
+                       type="password"
+                       autocomplete="new-password"
+                       required
+                       class="input @error('password') border-crimson-500 @enderror"
                        placeholder="Mínimo 8 caracteres">
+                @error('password')
+                    <p class="mt-2 text-sm text-crimson-600">{{ $message }}</p>
+                @enderror
                 
                 <!-- Password Strength Meter -->
                 <div data-password-strength class="mt-3 hidden">
@@ -69,11 +99,11 @@
             <!-- Password Confirmation Field -->
             <div>
                 <label for="password_confirmation" class="label">Confirme a Senha</label>
-                <input id="password_confirmation" 
-                       name="password_confirmation" 
-                       type="password" 
-                       autocomplete="new-password" 
-                       required 
+                <input id="password_confirmation"
+                       name="password_confirmation"
+                       type="password"
+                       autocomplete="new-password"
+                       required
                        class="input"
                        placeholder="Digite a senha novamente">
             </div>

@@ -15,6 +15,20 @@
             </p>
         </div>
 
+        <!-- Success Message -->
+        @if(session('success'))
+            <div class="mb-6 p-4 bg-green-50 border-2 border-green-200 rounded-2xl backdrop-blur-xl">
+                <p class="text-green-700 text-sm font-semibold">{{ session('success') }}</p>
+            </div>
+        @endif
+
+        <!-- Error Summary -->
+        @if($errors->any())
+            <div class="mb-6 p-4 bg-crimson-50 border-2 border-crimson-200 rounded-2xl backdrop-blur-xl">
+                <p class="text-crimson-700 text-sm font-semibold">{{ $errors->first() }}</p>
+            </div>
+        @endif
+
         <!-- Form -->
         <form class="space-y-6" action="{{ route('login') }}" method="POST">
             @csrf
@@ -27,8 +41,12 @@
                        type="email"
                        autocomplete="email"
                        required
-                       class="input"
+                       value="{{ old('email') }}"
+                       class="input @error('email') border-crimson-500 @enderror"
                        placeholder="seu@email.com">
+                @error('email')
+                    <p class="mt-2 text-sm text-crimson-600">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Password Field -->
@@ -39,8 +57,11 @@
                        type="password"
                        autocomplete="current-password"
                        required
-                       class="input"
+                       class="input @error('password') border-crimson-500 @enderror"
                        placeholder="Digite sua senha">
+                @error('password')
+                    <p class="mt-2 text-sm text-crimson-600">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Remember Me & Forgot Password -->
