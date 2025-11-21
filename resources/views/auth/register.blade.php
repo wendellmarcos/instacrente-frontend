@@ -1,67 +1,134 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-2xl">
-        <div>
-            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Crie sua conta
-            </h2>
-            <p class="mt-2 text-center text-sm text-gray-600">
-                Ou
-                <a href="#" class="font-medium text-blood-600 hover:text-blood-500 transition duration-150 ease-in-out">
-                    faça login na sua conta existente
-                </a>
+<div class="min-h-screen flex items-center justify-center py-24 px-6">
+    <div class="max-w-md w-full">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <div class="accent-line mx-auto mb-6"></div>
+            <h1 class="text-4xl md:text-5xl text-display mb-3">
+                Criar Conta
+            </h1>
+            <p class="text-gray-600">
+                Já tem uma conta?
+                <a href="{{ route('login') }}" class="link">Faça login</a>
             </p>
         </div>
-        <form class="mt-8 space-y-6" action="#" method="POST">
+
+        <!-- Form -->
+        <form class="space-y-6" action="{{ route('register') }}" method="POST">
             @csrf
-            <div class="rounded-md shadow-sm -space-y-px">
-                <div class="mb-4">
-                    <label for="name" class="sr-only">Nome Completo</label>
-                    <input id="name" name="name" type="text" autocomplete="name" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blood-500 focus:border-blood-500 focus:z-10 sm:text-sm" placeholder="Nome Completo">
-                </div>
-                <div class="mb-4">
-                    <label for="email-address" class="sr-only">Endereço de Email</label>
-                    <input id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blood-500 focus:border-blood-500 focus:z-10 sm:text-sm" placeholder="Endereço de Email">
-                </div>
-                <div class="mb-4">
-                    <label for="password" class="sr-only">Senha</label>
-                    <input id="password" name="password" type="password" autocomplete="new-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blood-500 focus:border-blood-500 focus:z-10 sm:text-sm" placeholder="Senha">
-                </div>
-                <div class="mb-4">
-                    <label for="password_confirmation" class="sr-only">Confirme a Senha</label>
-                    <input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blood-500 focus:border-blood-500 focus:z-10 sm:text-sm" placeholder="Confirme a Senha">
+            
+            <!-- Name Field -->
+            <div>
+                <label for="name" class="label">Nome Completo</label>
+                <input id="name" 
+                       name="name" 
+                       type="text" 
+                       autocomplete="name" 
+                       required 
+                       class="input"
+                       placeholder="Digite seu nome completo">
+            </div>
+
+            <!-- Email Field -->
+            <div>
+                <label for="email" class="label">Email</label>
+                <input id="email" 
+                       name="email" 
+                       type="email" 
+                       autocomplete="email" 
+                       required 
+                       class="input"
+                       placeholder="seu@email.com">
+            </div>
+
+            <!-- Password Field -->
+            <div>
+                <label for="password" class="label">Senha</label>
+                <input id="password" 
+                       name="password" 
+                       type="password" 
+                       autocomplete="new-password" 
+                       required 
+                       class="input"
+                       placeholder="Mínimo 8 caracteres">
+                
+                <!-- Password Strength Meter -->
+                <div data-password-strength class="mt-3 hidden">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs text-gray-600">Força da senha:</span>
+                        <span data-strength-text class="text-xs font-medium"></span>
+                    </div>
+                    <div class="w-full bg-gray-200 h-1 overflow-hidden">
+                        <div data-strength-bar class="h-1 transition-all duration-300" style="width: 0%"></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blood-600 focus:ring-blood-500 border-gray-300 rounded">
-                    <label for="remember-me" class="ml-2 block text-sm text-gray-900">
-                        Lembrar-me
+            <!-- Password Confirmation Field -->
+            <div>
+                <label for="password_confirmation" class="label">Confirme a Senha</label>
+                <input id="password_confirmation" 
+                       name="password_confirmation" 
+                       type="password" 
+                       autocomplete="new-password" 
+                       required 
+                       class="input"
+                       placeholder="Digite a senha novamente">
+            </div>
+
+            <!-- Terms Checkbox -->
+            <div class="flex items-start">
+                <div class="flex items-center h-5">
+                    <input id="terms" 
+                           name="terms" 
+                           type="checkbox" 
+                           required
+                           class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-gray-900">
+                </div>
+                <div class="ml-3 text-sm">
+                    <label for="terms" class="text-gray-700">
+                        Concordo com os 
+                        <a href="#" class="link">Termos de Uso</a>
+                        e
+                        <a href="#" class="link">Política de Privacidade</a>
                     </label>
                 </div>
-
-                <div class="text-sm">
-                    <a href="#" class="font-medium text-blood-600 hover:text-blood-500">
-                        Esqueceu sua senha?
-                    </a>
-                </div>
             </div>
 
-            <div>
-                <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blood-600 hover:bg-blood-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blood-500 transition duration-300">
-                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                        <!-- Heroicon name: solid/lock-closed -->
-                        <svg class="h-5 w-5 text-blood-500 group-hover:text-blood-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-                        </svg>
-                    </span>
-                    Cadastrar
+            <!-- Submit Button -->
+            <div class="pt-4">
+                <button type="submit" class="w-full btn-primary">
+                    Criar Conta
                 </button>
             </div>
         </form>
+
+        <!-- Additional Info -->
+        <div class="mt-12 text-center">
+            <p class="text-sm text-gray-500">
+                Ao criar uma conta, você concorda em fazer parte de uma comunidade cristã edificante e respeitosa.
+            </p>
+        </div>
     </div>
 </div>
+
+<script>
+// Show password strength meter when user starts typing
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordInput = document.querySelector('input[name="password"]');
+    const strengthMeter = document.querySelector('[data-password-strength]');
+    
+    if (passwordInput && strengthMeter) {
+        passwordInput.addEventListener('input', function() {
+            if (this.value.length > 0) {
+                strengthMeter.classList.remove('hidden');
+            } else {
+                strengthMeter.classList.add('hidden');
+            }
+        });
+    }
+});
+</script>
 @endsection

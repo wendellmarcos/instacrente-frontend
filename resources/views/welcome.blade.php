@@ -1,130 +1,214 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="relative overflow-hidden">
-    <!-- Abstract Background Elements -->
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-blood-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-        <div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-red-900 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div class="absolute bottom-[-20%] left-[20%] w-96 h-96 bg-blood-800 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
-    </div>
-
-    <div class="max-w-7xl mx-auto">
-        <div class="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-            <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-                <div class="sm:text-center lg:text-left">
-                    <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl drop-shadow-lg">
-                        <span class="block xl:inline">Conectando você</span>
-                        <span class="block text-blood-500 xl:inline">com propósito eterno</span>
-                    </h1>
-                    <p class="mt-3 text-base text-gray-200 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 font-light">
-                        Uma rede social edificada na rocha. Segura, transparente e livre de ruídos. Compartilhe sua fé, faça amigos e cresça espiritualmente em um ambiente consagrado.
-                    </p>
-                    <div class="mt-8 sm:mt-10 sm:flex sm:justify-center lg:justify-start gap-4">
-                        <div class="rounded-md shadow">
-                            <a href="{{ route('register') }}" class="w-full flex items-center justify-center btn-blood">
-                                Começar Agora
-                            </a>
-                        </div>
-                        <div class="mt-3 sm:mt-0">
-                            <a href="#" class="w-full flex items-center justify-center btn-glass">
-                                Saiba Mais
-                            </a>
-                        </div>
-                    </div>
+<!-- Hero Section - Minimalist -->
+<section class="section-padding bg-white">
+    <div class="container-narrow">
+        <div class="text-center space-y-8">
+            <!-- Accent Line -->
+            <div class="flex justify-center">
+                <div class="accent-line"></div>
+            </div>
+            
+            <!-- Main Heading -->
+            <h1 class="text-6xl md:text-7xl lg:text-8xl text-display tracking-tight">
+                Conectando você<br>
+                <span class="italic">com propósito eterno</span>
+            </h1>
+            
+            <!-- Subtitle -->
+            <p class="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Uma rede social edificada na rocha. Segura, transparente e livre de ruídos.
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+                <a href="{{ route('register') }}" class="btn-primary">
+                    Começar Agora
+                </a>
+                <a href="#sobre" class="btn-secondary">
+                    Saiba Mais
+                </a>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-12 pt-16 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gray-900 mb-1">10k+</div>
+                    <div class="text-sm uppercase tracking-wider text-gray-500">Membros</div>
                 </div>
-            </main>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gray-900 mb-1">50k+</div>
+                    <div class="text-sm uppercase tracking-wider text-gray-500">Postagens</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gray-900 mb-1">100%</div>
+                    <div class="text-sm uppercase tracking-wider text-gray-500">Seguro</div>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <!-- Hero Image/Illustration -->
-    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 flex items-center justify-center pointer-events-none">
-        <!-- Placeholder for a spiritual/connection image, using a glass card effect instead of a raw image -->
-        <div class="glass-card m-8 w-3/4 h-3/4 flex items-center justify-center text-center">
-             <div class="text-white/80">
-                <svg class="w-32 h-32 mx-auto mb-4 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                <p class="text-xl font-serif italic">"Onde o amor de Cristo nos une."</p>
-             </div>
-        </div>
-    </div>
-</div>
+</section>
+
+<!-- Divider -->
+<div class="divider"></div>
 
 <!-- Features Section -->
-<div class="py-12 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:text-center mb-12">
-            <h2 class="text-base text-blood-500 font-semibold tracking-wide uppercase">Diferenciais</h2>
-            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
-                Por que escolher o Instacrente?
-            </p>
-            <p class="mt-4 max-w-2xl text-xl text-gray-300 lg:mx-auto">
-                Construído para ser luz no mundo digital.
-            </p>
+<section id="sobre" class="section-padding bg-gray-50">
+    <div class="container-wide">
+        <!-- Section Header -->
+        <div class="text-center mb-20">
+            <p class="text-sm uppercase tracking-wider text-gray-500 mb-4">Diferenciais</p>
+            <h2 class="text-4xl md:text-5xl text-display">Por que escolher o Instacrente?</h2>
         </div>
-
-        <div class="mt-10">
-            <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-                <!-- Feature 1 -->
-                <div class="glass-card hover:bg-white/10 transition duration-300">
-                    <dt>
-                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-blood-700 text-white">
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                            </svg>
-                        </div>
-                        <p class="ml-16 text-lg leading-6 font-medium text-white">Comunidade Global</p>
-                    </dt>
-                    <dd class="mt-2 ml-16 text-base text-gray-300">
-                        Conecte-se com cristãos de todo o mundo e compartilhe experiências edificantes.
-                    </dd>
+        
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <!-- Feature 1 -->
+            <div class="text-center reveal" data-delay="0">
+                <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                    <svg class="w-12 h-12 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
                 </div>
-
-                <!-- Feature 2 -->
-                <div class="glass-card hover:bg-white/10 transition duration-300">
-                    <dt>
-                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-blood-700 text-white">
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-                            </svg>
-                        </div>
-                        <p class="ml-16 text-lg leading-6 font-medium text-white">Conteúdo Seguro</p>
-                    </dt>
-                    <dd class="mt-2 ml-16 text-base text-gray-300">
-                        Moderação ativa para garantir um ambiente livre de conteúdo impróprio.
-                    </dd>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Comunidade Global</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Conecte-se com cristãos de todo o mundo e compartilhe experiências edificantes.
+                </p>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="text-center reveal" data-delay="100">
+                <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                    <svg class="w-12 h-12 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
                 </div>
-
-                <!-- Feature 3 -->
-                <div class="glass-card hover:bg-white/10 transition duration-300">
-                    <dt>
-                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-blood-700 text-white">
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                        </div>
-                        <p class="ml-16 text-lg leading-6 font-medium text-white">Rápido e Leve</p>
-                    </dt>
-                    <dd class="mt-2 ml-16 text-base text-gray-300">
-                        Uma experiência fluida e otimizada para todos os dispositivos.
-                    </dd>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Conteúdo Seguro</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Moderação ativa para garantir um ambiente livre de conteúdo impróprio.
+                </p>
+            </div>
+            
+            <!-- Feature 3 -->
+            <div class="text-center reveal" data-delay="200">
+                <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                    <svg class="w-12 h-12 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
                 </div>
-
-                <!-- Feature 4 -->
-                <div class="glass-card hover:bg-white/10 transition duration-300">
-                    <dt>
-                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-blood-700 text-white">
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                            </svg>
-                        </div>
-                        <p class="ml-16 text-lg leading-6 font-medium text-white">Interatividade</p>
-                    </dt>
-                    <dd class="mt-2 ml-16 text-base text-gray-300">
-                        Comente, curta e compartilhe momentos especiais com seus amigos.
-                    </dd>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Rápido e Leve</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Uma experiência fluida e otimizada para todos os dispositivos.
+                </p>
+            </div>
+            
+            <!-- Feature 4 -->
+            <div class="text-center reveal" data-delay="300">
+                <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                    <svg class="w-12 h-12 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
                 </div>
-            </dl>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Comunidade Ativa</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Participe de grupos, eventos e discussões que fortalecem sua fé.
+                </p>
+            </div>
         </div>
     </div>
-</div>
+</section>
+
+<!-- Divider -->
+<div class="divider"></div>
+
+<!-- Testimonials Section -->
+<section class="section-padding bg-white">
+    <div class="container-wide">
+        <!-- Section Header -->
+        <div class="text-center mb-20">
+            <p class="text-sm uppercase tracking-wider text-gray-500 mb-4">Depoimentos</p>
+            <h2 class="text-4xl md:text-5xl text-display">O que dizem nossos membros</h2>
+        </div>
+        
+        <!-- Testimonials Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Testimonial 1 -->
+            <div class="reveal" data-delay="0">
+                <div class="mb-6">
+                    <p class="text-lg text-gray-700 leading-relaxed italic">
+                        "Finalmente uma rede social onde posso compartilhar minha fé sem medo de julgamentos. A comunidade é incrível!"
+                    </p>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-gray-900 text-white flex items-center justify-center font-semibold mr-4">
+                        M
+                    </div>
+                    <div>
+                        <div class="font-semibold text-gray-900">Maria Silva</div>
+                        <div class="text-sm text-gray-500">São Paulo, BR</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="reveal" data-delay="100">
+                <div class="mb-6">
+                    <p class="text-lg text-gray-700 leading-relaxed italic">
+                        "Encontrei um grupo de oração online que mudou minha vida. Gratidão por essa plataforma abençoada!"
+                    </p>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-gray-900 text-white flex items-center justify-center font-semibold mr-4">
+                        J
+                    </div>
+                    <div>
+                        <div class="font-semibold text-gray-900">João Santos</div>
+                        <div class="text-sm text-gray-500">Rio de Janeiro, BR</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="reveal" data-delay="200">
+                <div class="mb-6">
+                    <p class="text-lg text-gray-700 leading-relaxed italic">
+                        "Ambiente seguro e acolhedor. Meus filhos também usam e me sinto tranquila com a moderação ativa."
+                    </p>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-gray-900 text-white flex items-center justify-center font-semibold mr-4">
+                        A
+                    </div>
+                    <div>
+                        <div class="font-semibold text-gray-900">Ana Costa</div>
+                        <div class="text-sm text-gray-500">Belo Horizonte, BR</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Divider -->
+<div class="divider"></div>
+
+<!-- CTA Section -->
+<section class="section-padding bg-gray-900 text-white">
+    <div class="container-narrow text-center">
+        <div class="accent-line mx-auto mb-8"></div>
+        <h2 class="text-4xl md:text-5xl text-display mb-6">
+            Pronto para fazer parte?
+        </h2>
+        <p class="text-xl text-gray-300 mb-12 leading-relaxed">
+            Junte-se a milhares de cristãos que já estão compartilhando fé, esperança e amor.
+        </p>
+        <a href="{{ route('register') }}" class="btn-secondary bg-white text-gray-900 hover:bg-gray-100">
+            Criar Conta Grátis
+        </a>
+        <p class="mt-8 text-sm text-gray-400">
+            Sem cartão de crédito • 100% gratuito
+        </p>
+    </div>
+</section>
 @endsection
