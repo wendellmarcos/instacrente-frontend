@@ -10,19 +10,32 @@ class JavaApiService
 
     public function __construct()
     {
-        $this->baseUrl = 'http://localhost:8080/api';
+        $this->baseUrl = env('JAVA_API_URL', 'http://localhost:8081/api');
     }
 
     public function getHelloMessage()
     {
         try {
-            $response = Http::get("{$this->baseUrl}/hello");
+            $response = Http::timeout(2)->get("{$this->baseUrl}/hello");
             if ($response->successful()) {
                 return $response->json();
             }
             return ['message' => 'Erro ao comunicar com o Java: ' . $response->status()];
         } catch (\Exception $e) {
-            return ['message' => 'Erro de conexão com o Java: ' . $e->getMessage()];
+            return ['message' => 'Backend Java indisponível (Offline)'];
+        }
+    }
+
+    public function getPosts()
+    {
+        try {
+            $response = Http::timeout(2)->get("{$this->baseUrl}/posts");
+            if ($response->successful()) {
+                return $response->json();
+            }
+            return [];
+        } catch (\Exception $e) {
+            return [];
         }
     }
 }
