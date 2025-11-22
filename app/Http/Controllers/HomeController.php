@@ -16,7 +16,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        $data = $this->javaApiService->getHelloMessage();
-        return view('welcome', ['message' => $data['message'] ?? 'Sem mensagem']);
+        $message = $this->javaApiService->getHelloMessage();
+        $posts = $this->javaApiService->getPosts();
+        return view('welcome', ['message' => $message, 'posts' => $posts]);
     }
 }
